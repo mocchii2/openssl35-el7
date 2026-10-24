@@ -41,6 +41,8 @@ standalone runtime-only installation can select just `openssl35-muhoho`.
 The default private CA path is `/opt/openssl35/ssl/cert.pem`; configure trust
 deliberately before using the private CLI for peer verification.
 
+## Rollback
+
 Removal can break applications depending on these private libraries.
 Use normal package transactions with dependency review and a tested snapshot
 recovery procedure; never force-remove packages.

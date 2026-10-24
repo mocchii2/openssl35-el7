@@ -1,9 +1,12 @@
 # OpenSSL 3.5.9 RPMs for EL7 (x86_64)
 
-[English](README.md) | [日本語 / Japanese](README.ja.md)
+> **Emergency use:** Test/deploy private OpenSSL 3.5 as a temporary bridge to a supported OS.<br>
+> **Target:** EL7 x86_64, private `/opt/openssl35` prefix; build/test environment: Oracle Linux 7.9.<br>
+> **No warranty:** EL7 is EOL; no security or compatibility guarantee. System OpenSSL is not upgraded.
 
-> **For emergency use:** Procedures and build configurations for quickly testing and deploying private OpenSSL 3.5 on EL7.
-> Does not replace system OpenSSL. Intended as a temporary bridge to a supported OS.
+[Installation](INSTALL.md) | **[Rollback / recovery plan](INSTALL.md#rollback)**
+
+[English](README.md) | [日本語 / Japanese](README.ja.md)
 
 ## What this repository does
 

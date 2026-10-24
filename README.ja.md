@@ -1,12 +1,12 @@
 # OpenSSL 3.5.9 RPMs for EL7 (x86_64)
 
+> **緊急対応向け:** サポート対象OSへの移行まで、専用OpenSSL 3.5の検証・導入を支援します。<br>
+> **対象環境:** EL7 x86_64、`/opt/openssl35` 配下。ビルド・検証環境はOracle Linux 7.9です。<br>
+> **非保証:** EL7はEOLです。安全性・互換性は保証しません。OS標準OpenSSLは更新しません。
+
+[導入手順（英語）](INSTALL.md) | **[ロールバック・復旧計画（英語）](INSTALL.md#rollback)**
+
 [English](README.md) | [日本語 / Japanese](README.ja.md)
-
-> **緊急対応向け:** EL7環境で専用のOpenSSL 3.5系を迅速に検証・導入するための手順・ビルド設定集です。
-> OS標準のOpenSSLは置き換えません。サポート対象OSへの移行までの暫定対応を想定しています。
-
-> **For emergency use:** Procedures and build configurations for quickly testing and deploying private OpenSSL 3.5 on EL7.
-> Does not replace system OpenSSL. Intended as a temporary bridge to a supported OS.
 
 ## このリポジトリでできること（3行） / What this repository does
 
