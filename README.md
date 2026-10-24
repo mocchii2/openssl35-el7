@@ -1,30 +1,34 @@
 # OpenSSL 3.5.9 RPMs for EL7 (x86_64)
 
-> **緊急対応向け:** EL7環境で専用のOpenSSL 3.5系を迅速に検証・導入するための手順・ビルド設定集です。
-> OS標準のOpenSSLは置き換えません。サポート対象OSへの移行までの暫定対応を想定しています。
+[English](README.md) | [日本語 / Japanese](README.ja.md)
 
-## このリポジトリでできること（3行）
+> **For emergency use:** Procedures and build configurations for quickly testing and deploying private OpenSSL 3.5 on EL7.
+> Does not replace system OpenSSL. Intended as a temporary bridge to a supported OS.
 
-EL7向けのOpenSSL 3.5.9を、署名付きRPMでインストールできます。<br>
-システムのOpenSSLを置き換えず、`/opt/openssl35` に追加できます。<br>
-完全な対応ソースRPMとSPECを使って、自分でビルドできます。
+## What this repository does
 
-## 対応環境
+Install OpenSSL 3.5.9 on EL7 using signed RPMs.<br>
+Add it under `/opt/openssl35` without replacing system OpenSSL.<br>
+Rebuild from the complete corresponding source RPM and SPEC.
 
-- OS: EL7系 Linux（CentOS 7 / RHEL 7 / Oracle Linux 7）。
-- アーキテクチャ: **x86_64のみ**。検証用ビルド環境はOracle Linux 7.9。
-- 全派生OSでの動作保証はありません。EL8/9、aarch64用ではありません。
+## Target environment
 
-## 最短手順（署名確認からインストールまで）
+- OS: EL7-family Linux (CentOS 7 / RHEL 7 / Oracle Linux 7).
+- Architecture: **x86_64 only**. Build/test environment: Oracle Linux 7.9.
+- Not certified on every derivative/configuration. Not for EL8/9 or aarch64.
 
-**新規・検証用EL7ホストで実行してください。** スナップショットを取得し、
-信頼できるOSリポジトリから `curl`、`gnupg2`、`tar`、`yum`、`sudo` を用意します。
-下記はランタイムと開発用RPMをインストールします。依存関係の取得には、
-署名検証が有効なOSリポジトリ、または事前に導入した依存RPMが必要です。
-GPGエラーや依存エラーを無視せず、yumの変更内容を確認してください。
+## Quickstart: signature verification through installation
 
-公開鍵の指紋は、別の信頼できる経路でも確認してください。同じ配布元からの
-鍵とファイルの取得だけでは、配布元の身元を独立に確認したことになりません。
+**Use a fresh/test EL7 host.** Take a recovery snapshot and install `curl`,
+`gnupg2`, `tar`, `yum` and `sudo` from trusted OS repositories first.
+The commands install both runtime and development RPMs. Dependencies must be
+available from signature-verified OS repositories or installed beforehand.
+Do not ignore GPG/dependency errors; review yum's proposed changes.
+
+Confirm the public-key fingerprint through an independent trusted channel.
+Downloading a key and software from the same site is not independent identity
+verification. Run the command block below in an interactive terminal:
+yum reads its confirmation from `/dev/tty`.
 
 ```sh
 bash <<'BASH'
@@ -55,17 +59,18 @@ printf 'Downloaded files retained in: %s\n' "$work"
 BASH
 ```
 
-## 注意点（既知の制約）
+## Known limitations
 
-- **EL7はEOLです。** サポートされるOSへの移行を推奨します。
-- OSの `/usr/bin/openssl` やnginx、SSH、yumのTLSは更新しません。
-- FIPS認証や、すべての脆弱性への対応を保証するものではありません。
-- 通信に使用する前にCA設定を確認してください。削除時も依存関係の確認が必要です。
-- 詳細は [INSTALL.md](INSTALL.md) と下記のLimitationsを参照してください。
+- **EL7 is end-of-life.** Migrate to a supported OS.
+- Does not update `/usr/bin/openssl` or TLS used by nginx, SSH or yum.
+- No FIPS certification or guarantee that every vulnerability is fixed.
+- Review CA configuration before making connections; review dependencies
+  before removing these packages.
+- See [INSTALL.md](INSTALL.md) and Limitations below for details.
 
-## 動作確認ログ（実測、2026-10-24）
+## Observed version output (2026-10-24)
 
-EL7 x86_64の検証VMで取得した出力です。
+Captured on the EL7 x86_64 test VM.
 
 ```console
 $ /opt/openssl35/bin/openssl version
